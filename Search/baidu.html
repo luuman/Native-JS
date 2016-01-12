@@ -1,0 +1,20 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title>简单的百度搜索调用</title>
+</head>
+<body>
+	<form name="f" onsubmit="return s4()" method="get">
+		<input type="text" name="k" value="baidu搜索" size="28" onmouseover="this.focus()" onfocus="this.select()">
+		<input type="submit" value="搜索">
+	</form>
+	<script language="javascript">
+		function s4() {
+			var v = f.k.value
+			window.open("http://www.baidu.com/baidu?tn=592mm&word=" + v, "7");
+			return false;
+		}
+	</script>
+</body>
+</html>

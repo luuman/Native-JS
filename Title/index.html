@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title</title>
+</head>
+<body style="background: #3C3C3C;">
+	<div id="Popup"></div>
+	<!-- 用户浏览其他页面 -->
+    <script type="text/javascript">
+    // window 失去焦点，停止输出
+    	var Title = document.title
+		window.onblur=function(){
+		   document.title="对面的女孩看过来";
+		}
+		// window 每次获得焦点
+		window.onfocus = function() {
+		    document.title=Title;
+		}
+    </script>
+
+</body>
+</html>

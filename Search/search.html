@@ -1,0 +1,177 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title></title>
+	<style type="text/css">
+	<!--
+		td,body,input{font-size:12px}
+		a:link{color:#000000;text-decoration:none}
+		a:visited{color:#000000;text-decoration:none}
+		a:active{color:blue;text-decoration:none}
+		a:hover{color:red;text-decoration:underline}
+		a.b:link{color:#003300;text-decoration:none}
+		a.b:visited{color:#003300;text-decoration:none}
+		a.b:active{color:blue;text-decoration:none}
+		a.b:hover{color:red;text-decoration:underline}
+		a.c:link{color:#000080;text-decoration:none}
+		a.c:visited{color:#0000ff;text-decoration:none}
+		a.c:active{color:#0000ff;text-decoration:none}
+		a.c:hover{color:#0000ff;text-decoration:underline}
+		.so{font-size:12px;background-color:#cccccc;border-left:1px ridge #ffffff;border-right-style:ridge;border-right-width:1px;border-top:1px ridge #ffffff;border-bottom-style:ridge;border-bottom-width:1px}
+		.s0{background-image:url('images/sobg0.gif');line-height:21px;vertical-align:bottom}
+	.s1{background-image:url('images/sobg1.gif');line-height:21px;vertical-align:bottom}
+	-->
+	</style>
+	<SCRIPT>
+	<!--
+	function rf() {return false; }
+	document.oncontextmenu = rf
+
+	function keydown() {if(event.ctrlKey ==true || event.keyCode ==93 || event.shiftKey ==true){return false;} }
+	document.onkeydown =keydown
+
+	function drag() {return false;}
+	document.ondragstart=drag
+	//-->
+	</SCRIPT>
+	</head>
+		<script language="javascript">
+	<!--
+	var skw=new Array();
+	skw[0]="游戏";
+	skw[1]="翻译";
+	skw[2]="心理测试";
+	skw[3]="美容";
+	skw[4]="机票";
+	skw[5]="鲜花";
+	var ski=new Array();
+	ski[0]="人体彩绘";
+	ski[1]="桂林山水";
+	ski[2]="壁纸";
+	ski[3]="漫画";
+	ski[4]="车模";
+	ski[5]="婚纱";
+	var skn=new Array();
+	skn[0]="汇率";
+	skn[1]="军演";
+	skn[2]="人民币升值";
+	skn[3]="油价";
+	skn[4]="飓风";
+	skn[5]="中日关系";
+	var skm=new Array();
+	skm[0]="宁夏";
+	skm[1]="披着羊皮的狼";
+	skm[2]="你到底爱谁";
+	skm[3]="红颜";
+	skm[4]="欧若拉";
+	skm[5]="江南";
+	var b="";
+	function d(){
+	window.status=b;
+	timerID=setTimeout("d()",10000);}
+	function check(i){
+	if(i.MailBox.options.selectedIndex==0){
+	alert("提示：请正确选择你使用的邮箱");
+	return false;}
+	if(i.Username.value==""){
+	alert("提示：邮箱用户名必须填写！");
+	i.Username.focus();
+	return false;}
+	if(i.Password.value=="" || i.Password.value.length<3){
+	alert("提示：邮箱密码必须填写完整！");
+	i.Password.focus();
+	return false;}}
+	function cl(input){
+	if(input.D.options.selectedIndex==0 || input.D.options.selectedIndex==15 || input.D.options.selectedIndex==19){
+	alert("提示：请选择正确的登录目的地");
+	return false;}
+	if(input.Username.value==""){
+	alert("提示：登录用户名必须填写！");
+	input.Username.focus();
+	return false;}
+	if(input.Password.value=="" || input.Password.value.length<3){
+	alert("提示：登录密码必须填写完整！");
+	input.Password.focus();
+	return false;}}
+	function CP(input){input.Password.value="";}
+	function News_Window(theURL,winName,features){window.open(theURL,winName,features);}
+	function s4(){
+	var v=f.k.value
+	if(f.a1.checked)
+	window.open("http://www.yahoo.com.cn/search?source=yisou_union_shun6&pid=200523_1006&p="+v,"1");
+	if(f.a2.checked)
+	window.open("http://www.sogou.com/web?query="+v,"2");
+	if(f.a3.checked)
+	window.open("http://www.google.com/search?hl=zh-CN&ie=GB2312&q="+v,"3");
+	if(f.a4.checked)
+	window.open("http://search.qihoo.com/usearch.html?img=-1&site=www.shun6.com&lkw=&stype=&kw="+v,"4");
+	if(f.a6.checked)
+	window.open("http://cb.kingsoft.com/search?t=word&lang=gb2312&s="+v,"6");
+	if(f.a7.checked)
+	window.open("http://www.baidu.com/baidu?tn=592mm&word="+v,"7");
+	if(f.a8.checked)
+	window.open("http://music.yisou.com/search?source=yisou_union_265&p="+v,"8");
+	if(f.a9.checked)
+	window.open("http://music.yisou.com/lyric.html?source=yisou_union_265&p="+v,"9");
+	if(f.a10.checked)
+	window.open("http://images.google.com/images?ie=GB2312&hl=zh-CN&q="+v,"10");
+	return false;}
+	var KeyNo=Math.floor(6*Math.random());
+	function IniV(){document.s.p.value=skw[KeyNo];}
+	function IniVa(){document.f.k.value=skw[KeyNo];}
+	function sec(){
+	if(s.k.value=="news"){s.action="http://news.yisou.com/search"}
+	else if(s.k.value=="img"){s.action="http://image.yisou.com/search"}
+	else if(s.k.value=="page"){s.action="http://www.yisou.com/search"}
+	else if(s.k.value=="mp3"){s.action="http://music.yisou.com/search"}
+	}
+	function secBoard(n){
+	var KeyNo=Math.floor(6*Math.random());
+	for(i=1;i<5;i++){
+	eval("document.getElementById('cel"+i+"').className='s0'");
+	eval("x0"+i+".style.display='none'");
+	eval("x0"+n+".style.display='block'");
+	}
+	eval("document.getElementById('cel"+n+"').className='s1'");
+	if(n==1){s.p.value=skw[KeyNo];s.k.value="page";}
+	else if(n==2){s.p.value=ski[KeyNo];s.k.value="img";}
+	else if(n==3){s.p.value=skn[KeyNo];s.k.value="news";}
+	else if(n==4){s.p.value=skm[KeyNo];s.k.value="mp3";}
+	}
+	//--></script>
+<body topmargin="0" leftmargin="0" onload="d();">
+	<table border="0" width="760" cellspacing="0" cellpadding="0" align="center">
+		<tr>
+			<td width="100%">
+				<table border="0" width="100%" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="100%">
+							<form name="f" onsubmit="return s4()" method="get">
+								<table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#FFD700" background="bg_03.gif" height="27">
+									<tr>
+										<td align="right">
+											<input type="text" name="k" value="baidu搜索" size="28" onmouseover="this.focus()" onfocus="this.select()">
+											<script language="javascript">IniV();IniVa();</script>
+											<input type="submit" style="background-color: #FFFFFF; font-size: 12px" value="搜索">
+												<input type="checkbox" name="a1">雅虎
+												<input type="checkbox" name="a2">搜狗
+												<input type="checkbox" name="a3">Google
+												<input type="checkbox" name="a4">论坛
+												<input type="checkbox" name="a6">词霸
+												<input type="checkbox" name="a7" checked>百度
+												<input type="checkbox" name="a8">mp3
+												<input type="checkbox" name="a9">歌词
+												<input type="checkbox" name="a10">图片&nbsp;&nbsp;
+										</td>
+									</tr>
+								</table>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br></body>
+</html>

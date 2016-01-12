@@ -1,0 +1,68 @@
+/* Mian 兼容*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td, textarea, input { 
+	font-family: "微软雅黑";
+	font-weight: normal; 
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: none;/*禁用Webkit内核浏览器的文字大小调整功能*/
+	line-height: 1.5;
+}
+a, a:link, a:active, a:visited, a:hover{
+	color: #233241;
+	text-decoration: none;
+}
+pre{
+	font-size: 12px;
+	width: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;/*允许独立的滚动区域和触摸回弹*/
+}
+ul{
+	list-style-type: none;
+}
+html,body {
+	height: 100%;
+	overflow: hidden;
+}
+
+#rightMenu {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+#rightMenu ul {
+	float: left;
+    padding: 2px;
+    background-color: #FFF;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    border: 1px solid #d5d5d5;
+}
+#rightMenu ul li {
+    float: left;
+    width: 100%;
+    clear: both;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 1px solid #e8e9e7;
+    display: block;
+    line-height: 36px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #787977;
+}
+#rightMenu ul li.sub {
+	/*警用标志*/
+	/*cursor: not-allowed;*/
+}
+#rightMenu ul li.active {
+	color: #FFF;
+    background: #6BC30D;
+}
+#rightMenu ul ul {
+	display: none;
+	position: absolute;
+	margin-left: 2px;
+}

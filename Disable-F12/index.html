@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>阻止右键菜单（阻止默认事件）</title>
+    <style type="text/css">
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td, textarea, input { 
+	font-family: "微软雅黑";
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	/*属性允许您以确切的方式定义适应某个区域的具体内容*/
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;/* Firefox */
+	-webkit-box-sizing:border-box;/* Safari */
+}
+body {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: none;/*禁用Webkit内核浏览器的文字大小调整功能*/
+	line-height: 1.5;
+}
+a, a:link, a:active, a:visited, a:hover{
+	color: #233241;
+	text-decoration: none;
+}
+pre{
+	font-size: 12px;
+	width: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;/*允许独立的滚动区域和触摸回弹*/
+}
+ul{
+	list-style-type: none;
+}
+    #Popup{
+    }
+    #Popup div{
+    	width: 100%;
+	    position: absolute;
+	    height: 100%;
+	    background: rgba(255, 255, 255, 0.31);
+    }
+    #Popup div a{
+    	position: fixed;
+    	background:#FFF;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%,-50%);
+    	box-shadow: 3px 3px 0px rgba(255, 26, 26, 0.62);
+    	border: 1px solid #CA1212;
+    	padding: 10px 20px;
+    	border-radius: 6px;
+    }
+    </style>
+</head>
+<body style="background: #3C3C3C;">
+	<div id="Popup"></div>
+    <script type="text/javascript">
+		// 禁用右键
+        document.oncontextmenu = function (){
+            return false
+        }
+    </script>
+    <script type="text/javascript">
+		// 禁用F12
+		document.onkeydown = document.onkeyup = document.onkeypress = function() {
+			if (window.event.keyCode == 123) {
+				document.getElementById("Popup").innerHTML="<div><a href=#>这个真的没什么好看的，还是看内容吧！</a></div>";
+				// 关闭窗口
+				setTimeout(b, 2000);
+				function b() {
+					window.close();
+				}
+				window.event.returnValue = false;
+				return (false);
+			}
+		}
+    </script>
+</body>
+</html>

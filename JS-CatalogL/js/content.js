@@ -11,7 +11,7 @@ window.onload = function() {
     {
         project: [{text: "第二课"},
         {text: "搜索",href: "Search/05.html"},
-        {text: "搜索",href: "Search/06.html"}]
+        {text: "搜索",href: "Search/06.html"},
         {text: "网页换肤",href: "Skin Peeler/01.html"},
         {text: "Tab",href: "Tab"},
         {text: "求出数组中所有数字的和",href: "lesson2/03.html"},

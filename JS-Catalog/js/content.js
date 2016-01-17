@@ -399,6 +399,7 @@ window.onload = function() {
     },
     ]);
     (function() {
+        // 调用微博
         var oDiv = document.createElement("div");
         oDiv.style.width = "384px";
         oDiv.style.textAlign = "right";

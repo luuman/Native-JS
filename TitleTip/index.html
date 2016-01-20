@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>原生JS TitleTip</title>  
+    <meta charset="UTF-8">
+    <style>
+	    #TitleTipDiv {
+	    	font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+	        text-align: center;
+	        color: #fff;
+	        background: rgba(0,0,0,.8);
+	        position: absolute;
+	        z-index: 100;
+	        padding: 5px 15px;
+	        max-width: 200px;
+	        font-size: 12px;
+	        line-height: 20px;
+	        transform: translate(-50%);
+	        border-radius: 6px;
+	    }
+	    #TitleTipDiv:before {
+	        width: 0;
+	        height: 0;
+	        border-left: 8px solid transparent;
+	        border-right: 8px solid transparent;
+	        border-bottom: 8px solid rgba(0,0,0,.8);
+	        content: '';
+	        position: absolute;
+	        left: 50%;
+	        top: -8px;
+	        margin-left: -8px
+	    }
+	    /* 重置文本格式元素 */
+	    a { text-decoration: none; }
+	    a:hover { text-decoration: underline; }
+	    /* 清除内外边距 */
+	    body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+	    dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+	    pre, /* text formatting elements 文本格式元素 */
+	    fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+	    th, td { /* table elements 表格元素 */
+	        margin: 0;
+	        padding: 0;
+	    }
+    </style>
+</head>
+<body style="min-width:700px; ">
+	
+	<a href="#" title="Top Value, display below" >A标签TitleTip</a> <br />
+	
+	<a style="float:right" href="#" class="TitleTip" title="BI Scorecard , Exclusion Rules - A标签TitleTip , Omniture Active has been updated " >Omniture A标签TitleTip Active has been updated</a> <br />
+	
+	<a href="#" class="TitleTip" title="BI Scpdated orecard , Exclusion Rul niture Ac" >Exclusion Rules - A标签TitleTip</a> <br />
+	
+	<a href="#" class="TitleTip" title="BI Scp" >A标签TitleTip</a> <br />
+
+	<script type="text/javascript">
+		var Common = {
+			getItself: function(id) {
+				return "string" == typeof id ? document.getElementById(id) : id;
+			},
+			getTextSize: function(text) {
+				var span = document.createElement("span");
+				var result = {};
+				result.width = span.offsetWidth;
+				result.height = span.offsetWidth;
+				span.style.visibility = "hidden";
+				document.body.appendChild(span);
+				if (typeof span.textContent != "undefined") span.textContent = text;
+				else span.innerText = text;
+				result.width = span.offsetWidth - result.width;
+				result.height = span.offsetHeight - result.height;
+				span.parentNode.removeChild(span);
+				return result;
+			}
+		}
+		var TitleTip = {
+			showTitleTip: function(param, linkObj, e) {
+				var div;
+				if (document.getElementById("TitleTipDiv")) {
+					document.body.removeChild(document.getElementById("TitleTipDiv"));
+				}
+				div = document.createElement("div");
+				div.id = "TitleTipDiv";
+				// div.style.cssText = "text-align: center; color: #fff; background: rgba(0,0,0,.8); position: absolute; z-index: 100; padding: 5px 15px; font-size: 12px; line-height: 20px; transform: translate(-50%); border-radius: 6px;";
+				div.innerHTML = linkObj.tip;
+				document.body.appendChild(div);
+
+				if (param && param.width) { //如未设置，默认一行显示
+					if (Common.getTextSize(div.innerHTML).width < param.width) {
+						div.style.maxWidth = param.width + "px";
+					} else {
+						div.style.width = param.width + "px";
+					}
+				}
+
+				//must before set opr to get offsetHeight...
+				div.style.display = ""; 
+
+				///set TitleTip position
+				// console.log("a W"+linkObj.offsetWidth);
+				// console.log("a H"+linkObj.offsetHeight);
+				// console.log("a X"+linkObj.offsetTop);
+				// console.log("a Y"+linkObj.offsetLeft);
+				// console.log("Tip W"+div.offsetWidth);
+				// console.log("Tip H"+div.offsetHeight);
+
+				div.style.top = linkObj.offsetTop + linkObj.offsetHeight + 8 + "px";
+				div.style.left = linkObj.offsetLeft + linkObj.offsetWidth/2 + "px";
+
+				///hide TitleTip after some time
+				if (param && param.time) {
+					setTimeout(this.hidTitleTip, param.time);
+				}
+			},
+			hidTitleTip: function() {
+				if (document.getElementById("TitleTipDiv")) {
+					document.getElementById("TitleTipDiv").style.display = "none";
+				}
+			},
+			addTips: function(param) {
+				var linkArr = document.getElementsByTagName("a");
+				if (!linkArr) {
+					return false;
+				}
+				for (i = 0; i < linkArr.length; i++) {
+					if (linkArr[i].className == "TitleTip") {
+						linkArr[i].tip = linkArr[i].title;
+						var tipObj = this;
+						linkArr[i].onmouseover = function(e) {
+							tipObj.showTitleTip(param, this, e);
+						}
+						linkArr[i].onmouseout = tipObj.hidTitleTip;
+						if (param && param.moveable == true) { //默认不滚动
+							linkArr[i].onmousemove = function(e) {
+								tipObj.showTitleTip(param, this, e);
+							}
+						}
+						linkArr[i].title = "";
+					}
+				}
+			}
+		}
+		window.onload = function() {
+			TitleTip.addTips({
+				width: 200
+			}); 
+			// time:5000, moveable: true 
+		}
+	</script>
+</body>
+</html>
+

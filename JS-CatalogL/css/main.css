@@ -13,6 +13,7 @@ body {
 	font-size: 62.5%;
 	-webkit-text-size-adjust: none;/*禁用Webkit内核浏览器的文字大小调整功能*/
 	line-height: 1.5;
+	background: #3f3f3f;
 }
 a, a:link, a:active, a:visited, a:hover{
 	color: #233241;
@@ -30,8 +31,8 @@ ul{
 
 #wrap {
 	width: 350px;
-	background: #FFF;
-	border: 12px solid #EEE;
+	background: #272323;
+	border: 12px solid #323030;
 	border-radius: 10px;
 	margin: 10px auto 0;
 	padding: 5px 5px 4px;

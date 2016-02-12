@@ -1,0 +1,24 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style-type: none;
+}
+.upload{width:100px;margin: auto;}
+.after-upload{display:none;}
+.arro{    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-bottom: 7px solid #323232;
+    border-right: 6px solid transparent;
+    left: 34px;
+    top: -7px;}
+.after-upload ul{
+background-color: #323232;
+    border-radius: 2px;
+}

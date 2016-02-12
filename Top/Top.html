@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Top</title>
+
+</head>
+<body>
+	<div style="height: 1900px;width: 900px;margin:auto;">
+		<iframe src="http:\\www.baidu.com\" style="width:100%;height:100%;"></iframe>
+	</div>
+	<div id="Top" style="display: none;width: 40px;height: 40px;background:#000;position: fixed;bottom: 20px;right: 20px;"></div>
+	<script type="text/javascript">
+		//页面加载完毕，后触函数
+		window.onload = function(){
+			var Top = document.getElementById('Top');
+			var TimeTop = null;
+			var IsTop = true;
+			var clientHeight = document.documentElement.clientHeight;
+			//关闭定时器
+			window.onscroll = function(){
+				var TopScroll = document.documentElement.scrollTop || document.body.scrollTop;
+				if(TopScroll >= clientHeight){
+					Top.style.display = 'block';
+				}else{
+					Top.style.display = 'none';
+				}
+				if(!IsTop){
+					clearInterval(TimeTop);
+				}
+				IsTop = false;
+			}
+			Top.onclick = function(){
+					//设置定时器
+				TimeTop = setInterval(function(){
+					//获取滚动条的距离
+					var TopScroll = document.documentElement.scrollTop || document.body.scrollTop;
+					//向下取整
+					var TopSpeed = Math.floor(TopScroll / 10);
+					console.log(TopScroll);
+					console.log(TopSpeed);
+					document.documentElement.scrollTop = document.body.scrollTop = TopScroll - TopSpeed;
+					IsTop = true;
+					//清楚定时器
+					if(TopScroll == 0){
+						clearInterval(TimeTop);
+					}
+				},30);
+			} 
+		}
+	</script>
+</body>
+</html>

@@ -13,7 +13,7 @@ window.onload = function() {
 
     {
         project: [{text: "页面"},
-        {text: "回到顶部",href: "../Top"},
+        {text: "回到顶部",href: "../Top/TopJS"},
         {text: "SetTimeout栏目展开",href: "../SetTimeout"},
         {text: "页面配色切换",href: "../Skin Peeler/2"},
         {text: "搜索功能",href: "../Search/baidu"},

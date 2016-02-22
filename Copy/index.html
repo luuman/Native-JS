@@ -92,16 +92,16 @@
 </body>
 <script type="text/javascript">
 	window.onload = function(){
-		console.log("onload");
+		alert("onload");
 		if(window.getSelection){
 			window.getSelection
-			console.log("getSelection");
+			alert("getSelection");
 		}
 		document.body.oncopy = function(){
-			console.log("oncopy");
+			alert("oncopy");
 			if(window.getSelection) {
 				var selectedText = window.getSelection().toString(); 
-				console.log(selectedText);
+				alert(selectedText);
 				alert(selectedText);
 			} 
 		}

@@ -105,7 +105,7 @@ window.onload = function ()
         oMenu.style.display = "none"    
     };
     
-    //取li中最大的宽度, 并赋给同级所有li  
+    //取li中最大的宽度, 并赋给同级所有li
     function setWidth(obj)
     {
         maxWidth = 0;

@@ -73,38 +73,103 @@
       font-weight: 400;
       font-size: 15px;
     }
+    .shares{
+        display: none;
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        width: 40px;
+        height: 40px;
+        background: #15DCD9;
+        border-radius: 50%;
+    }
+    .ui-loader {
+      display: none;
+      z-index: 9999999;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border: 0;
+    }
     </style>
 
 </head>
 <body>
-	<div class="hd">
-		<h1 class="page_title">Article</h1>
-	</div>
-	<article class="weui_article">
+    <div class="hd">
+        <h1 class="page_title">Article</h1>
+    </div>
+    <article class="weui_article">
         <h1>标题</h1>
-        <section>
+        <section id="pageone">
             <h2 class="title">《参与感》</h2>
             <section>
                 <p>小米终于开口了，作为社会化营销的圣经读物，《参与感》翻开的是一个崭新的商业时代。小米现象的背后，是互联网时代人类信息组织结构的深层巨变，是小米公司对这一巨变的敏感觉察和精确把握。了解小米，从《参与感》开始！</p>
             </section>
         </section>
     </article>
+    <div class="shares"></div>
 </body>
+<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script> -->
+
 <script type="text/javascript">
-	window.onload = function(){
-		alert("onload");
-		if(window.getSelection){
-			window.getSelection
-			alert("getSelection");
-		}
-		document.body.oncopy = function(){
-			alert("oncopy");
-			if(window.getSelection) {
-				var selectedText = window.getSelection().toString(); 
-				alert(selectedText);
-				alert(selectedText);
-			} 
-		}
-	}
+    $(document).ready(function(){
+        // alert("onload");
+        $("p").on("taphold",function(){
+            alert("长按屏幕");
+            $(".shares").css("display","block");
+            var a={};
+            a.text = window.getSelection().toString(); 
+            alert(a.text);
+
+            a.text.onchange=function(){
+                a.text = window.getSelection().toString(); 
+                return;
+                alert(a.text);
+            }
+            // getSelectedContents();
+            // function getSelectedContents(){
+            //    if (window.getSelection) { //chrome,firefox,opera
+            //        var range=window.getSelection().getRangeAt(0);
+            //        var container = document.createElement('div');
+            //        container.appendChild(range.cloneContents());
+            //        return container.innerHTML;
+            //        //return window.getSelection(); //只复制文本
+            //    }
+            //    else if (document.getSelection) { //其他
+            //        var range=window.getSelection().getRangeAt(0);
+            //        var container = document.createElement('div');
+            //        container.appendChild(range.cloneContents());
+            //        return container.innerHTML;
+            //        //return document.getSelection(); //只复制文本
+            //    }
+            //    else if (document.selection) { //IE特有的
+            //        return document.selection.createRange().htmlText;
+            //        //return document.selection.createRange().text; //只复制文本
+            //    }
+            // }
+            
+            // if(window.getSelection) {
+            //         var selectedText = window.getSelection().toString(); 
+            //         alert(selectedText);
+            //     }
+      });
+    });
+    // window.onload = function(){
+    //     alert("onload");
+    //     if(window.getSelection){
+    //         window.getSelection
+    //         alert("getSelection");
+    //     }
+    //     document.body.oncopy = function(){
+    //         alert("oncopy");
+    //         if(window.getSelection) {
+    //             var selectedText = window.getSelection().toString(); 
+    //             alert(selectedText);
+    //             alert(selectedText);
+    //         } 
+    //     }
+    // }
 </script>
 </html>

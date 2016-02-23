@@ -119,15 +119,17 @@
         $("p").on("taphold",function(){
             alert("长按屏幕");
             $(".shares").css("display","block");
-            var a={};
-            a.text = window.getSelection().toString(); 
-            alert(a.text);
+            setTimeout("sharet()",2000);
+            
+            // var a={};
+            // a.text = window.getSelection().toString(); 
+            // alert(a.text);
 
-            a.text.onchange=function(){
-                a.text = window.getSelection().toString(); 
-                return;
-                alert(a.text);
-            }
+            // a.text.onchange=function(){
+            //     a.text = window.getSelection().toString(); 
+            //     return;
+            //     alert(a.text);
+            // }
             // getSelectedContents();
             // function getSelectedContents(){
             //    if (window.getSelection) { //chrome,firefox,opera
@@ -171,5 +173,10 @@
     //         } 
     //     }
     // }
+    function sharet(){
+        var selectedText = window.getSelection().toString(); 
+        alert(selectedText);
+    }
+
 </script>
 </html>

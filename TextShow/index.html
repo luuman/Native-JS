@@ -83,9 +83,11 @@
                     if(Btn.innerHTML == "显示全部"){
                         Btn.innerHTML = "收起";
                         NewT.innerHTML = Texts;
+                        NewT.className = "show";
                     }else{
                         Btn.innerHTML = "显示全部";
                         NewT.innerHTML = Texts.substring(0,200) + "……";
+                        NewT.className = "hide";
                     }
                 }
                 DivT.innerHTML = "";
@@ -98,6 +100,8 @@
         // 激活active
         document.addEventListener("touchstart", function(){
             }, true);
+        
+        // 可以使用动画，通过不同时刻执行不同动画。
     </script>
 </body>
 </html>

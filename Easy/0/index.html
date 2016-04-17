@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>类型判断</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+	/* Mian 兼容*/
+		body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td, textarea, input { 
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-weight: normal; 
+			padding: 0;
+			margin: 0;
+			/*属性允许您以确切的方式定义适应某个区域的具体内容*/
+			box-sizing:border-box;
+			-moz-box-sizing:border-box; /* Firefox */
+			-webkit-box-sizing:border-box; /* Safari */
+		}
+		body {
+			font-size: 62.5%;
+			background: #222;
+			-webkit-text-size-adjust: none;/*禁用Webkit内核浏览器的文字大小调整功能*/
+			line-height: 1.5;
+		}
+		a, a:link, a:active, a:visited, a:hover{
+			color: #233241;
+			text-decoration: none;
+		}
+		pre{
+			font-size: 12px;
+			width: 100%;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;/*允许独立的滚动区域和触摸回弹*/
+		}
+		ul{
+			list-style-type: none;
+		}
+		p{
+			float: left;
+			padding: 0 20px;
+			line-height: 40px;
+			color: #666;
+			text-align: center;
+			border: 1px solid #666;
+			border-radius: 3px;
+			margin-left: 10px;
+			margin-top: 10px;
+			position: relative;
+			text-transform: capitalize;
+		}
+		p:hover{
+			border: 1px solid rgba(28, 171, 233, 0.5);
+		}
+		div{
+			text-transform: capitalize;
+			max-width: 800px;
+			margin: auto;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+		
+	</style>
+</head>
+<body>
+</body>
+	<script type="text/javascript">
+		//方法不对，获取的是字符串
+		window.onload=function(){
+			//类型数组
+			var TypeOF =[
+				11,'abc',false,undefined,null,{x: 1},[1, 2, 3],function(){},[],{}
+			];
+			var TypeOFs =['11','abc','false','undefined','null','{x: 1}','[1, 2, 3]','function(){}','[]','{}'
+			];
+			//常见div
+			var Divp = document.createElement("div");
+			var body_element = document.getElementsByTagName('body')[0];
+			body_element.appendChild(Divp);
+			var Tes = "";
+			//For遍历表格
+				for(var i=0;i<TypeOFs.length;i++){
+
+					Tes += "<p>" + TypeOFs[i] +"</p>";
+					// console.log(Tes);
+				};
+			Divp.innerHTML = Tes;
+			//单击显示内容
+			var Diop = Divp.getElementsByTagName('p');
+				for(var j=0;j<Diop.length;j++){
+					console.log(Diop[j]);
+					Diop[j].Numbers = j;
+					Diop[j].onclick = function(){
+					var a = TypeOF[this.Numbers];
+					Hidden(typeof a);
+				};
+			};
+		}
+		//创建节点、删除节点
+		function Hidden(Texts){
+			var body_element = document.getElementsByTagName('body')[0];
+			var D_div = document.createElement('div');
+			var Divns = '<div style="position: absolute;left: 50%;top: 50%;border-radius: 6px;transform:translate(-50%,-50%);padding: 15px;background: #FFF;text-align: center;">' + Texts + '</div>';
+			D_div.innerHTML = Divns;
+			body_element.appendChild(D_div);
+			window.setTimeout(function(){
+				//删除节点
+				body_element.removeChild(D_div);
+			},2000);
+		}
+	</script>
+</html>

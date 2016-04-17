@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数字增长效果</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div id="rises">1000</div>
+	<span id="abc">1</span>
+</body>
+	<script type="text/javascript">
+		function Rise(Names,Start,Times){
+			var Numbers = document.getElementById(Names);
+			console.log(Numbers);
+			var a = Numbers.innerHTML/Times;
+			Numbers.innerHTML = Start;
+			console.log(a);
+			for(var i=0;i<Times;i++){
+				setTimeout(function(){
+					Start += a;
+					Numbers.innerHTML = Start;
+				},1000);
+					console.log(Numbers);
+			};
+		};
+		Rise("rises",0,3);
+		
+		window.onload = function() {
+		    // 数字到达 100 后还原为 1
+		    var max = 100,
+		        o = document.getElementById('abc');
+		        var chrome = /chrome/i.test(navigator.userAgent);
+		                         
+		    // 获取保存的数据
+		    if(chrome) {
+		        data_num = sessionStorage.getItem("num") || "";
+		    }
+		    else {
+		        data_num = document.cookie.replace(
+		        /(?:(?:^|.*;\s*)num\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/,
+		        "$1");
+		    }
+		    var num_now = parseInt(data_num) || 0;
+		                         
+		    o.innerHTML = num_now + 1;
+		                         
+		    // 每 0.1 秒更新一次数字，并保存数据
+		    setInterval(function() {
+		        num_now = num_now >= max ? 1 : num_now + 1;
+		        o.innerHTML = num_now;
+		        if(chrome) {
+		            sessionStorage.setItem("num", num_now);
+		        }
+		        else {
+		            document.cookie = "num=" + num_now + ";path=/;";
+		        }
+		    }, 100);
+		};
+	</script>
+</html>

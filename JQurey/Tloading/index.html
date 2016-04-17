@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>展示分类</title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="images/.ico">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <!-- loading -->
+    <link rel="stylesheet" href="css/loading-style.css">
+</head>
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
+    <!-- loading -->
+    <script src="js/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#loader').fadeOut();
+            $('#loader-wrapper').delay(350).fadeOut('slow');
+            $('body').delay(350).css({'overflow-y':'visible'});
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TopTitle文章顶部标题</title>
+</head>
+<body style="background: #3C3C3C;">
+	<div id="Popup"></div>
+	<!-- 用户浏览其他页面 -->
+    <script type="text/javascript">
+    	//函数封装调用
+		function TopTitles(Words){
+			var Title = document.title;
+			console.log("a");
+			window.onblur = function(){
+				console.log("aa");
+				document.title = Words;
+			}
+			window.onfocus = function(){
+				document.title = Title;
+			}
+		}
+		TopTitles("客官莫走");
+    </script>
+
+</body>
+</html>

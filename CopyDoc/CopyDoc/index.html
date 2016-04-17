@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>复制内容加版权信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <!-- 关键词 -->
+    <meta name="keywords" content="" />
+    <!-- 描述 -->
+    <meta name="description" content="" />
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- uc强制竖屏 -->  
+    <meta name="screen-orientation" content="portrait">  
+    <!-- QQ强制竖屏 -->  
+    <meta name="x5-orientation" content="portrait">  
+    <!-- UC强制全屏 -->  
+    <meta name="full-screen" content="yes">  
+    <!-- QQ强制全屏 -->  
+    <meta name="x5-fullscreen" content="true">  
+    <!-- UC应用模式 -->  
+    <meta name="browsermode" content="application">  
+    <!-- QQ应用模式 -->  
+    <meta name="x5-page-mode" content="app">  
+    <style type="text/css">
+    html {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      line-height: 1.6;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a img {
+      border: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    .hd {
+      padding: 2em 0;
+    }
+    .page_title {
+      text-align: center;
+      font-size: 34px;
+      color: #3cc51f;
+      font-weight: 400;
+      margin: 0 15%;
+    }
+    .weui_article {
+      padding: 20px 15px;
+      font-size: 15px;
+    }
+    .weui_article h1 {
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: .75em;
+    }
+    .weui_article section {
+      margin-bottom: 1.5em;
+    }
+    .weui_article h2 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: .3em;
+    }
+    .weui_article h3 {
+      font-weight: 400;
+      font-size: 15px;
+    }
+    .shares{
+        display: none;
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        width: 40px;
+        height: 40px;
+        background: #15DCD9;
+        border-radius: 50%;
+    }
+    .ui-loader {
+      display: none;
+      z-index: 9999999;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border: 0;
+    }
+    </style>
+
+</head>
+<body>
+    <div class="hd">
+        <h1 class="page_title">CopyDoc</h1>
+    </div>
+    <article class="weui_article">
+        <h1></h1>
+        <section id="pageone">
+            <h2 class="title"></h2>
+            <section>
+                <p>复制很简单，但要弄明白。天下文章那么多，不要仅收收。文中使用Selection.selectAllChildren，将你复制的内容，定向制定到我定义的内容中。但是这个内容你看不见。</p>
+                
+            </section>
+        </section>
+    </article>
+    <div class="shares"></div>
+</body>
+<script type="text/javascript">
+    function CopyDoc(author,froms){
+        document.body.oncopy = function(){
+            var body_element = document.getElementsByTagName('body')[0];
+            var selections;
+
+            //DOM、FF、Webkit、Chrome、IE 10
+            if(window.getSelection){
+                selections = window.getSelection();
+                //console.log("Copy:" + document.location.href);
+            }
+            //IE 10
+            else if(document.getSelection){
+                selections = document.getSelection();
+                //console.log("Copy:" + document.location.href);
+            }
+            //IE6 + 10-
+            else if(document.selection){
+                selections = document.selection.createRange().text;
+                //console.log("Copy:" + document.location.href);
+            }else{
+                selections = "";
+                //console.log("浏览器兼容问题导致复制失败！");
+            }
+
+            var pageCopy = '著作权归作者所有。<br />商业转载请联系作者获得授权，非商业转载请注明出处。<br />作者：' + author + '<br />链接：' + document.location.href + '<br />来源：' + froms + '<br />';
+            var copy_text = pageCopy + selections;
+            var new_div = document.createElement('div');
+
+            new_div.style.left = '-9999999px';
+            new_div.style.position = 'absolute';
+            body_element.appendChild(new_div);
+            new_div.innerHTML = copy_text;
+            selections.selectAllChildren(new_div);
+            window.setTimeout(function(){
+                //删除节点
+                body_element.removeChild(new_div);
+            },0);
+        }
+    }
+    //复制内容加版权信息：作者、来源
+    CopyDoc("世平阜康","Luuman's Blog");
+</script>
+</html>
+

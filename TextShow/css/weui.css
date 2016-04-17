@@ -21,10 +21,11 @@ a img {
 a {
   text-decoration: none;
 }
+/*隐藏滑动条*/
 /* Turn on a 16x16 scrollbar */
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 0px;
+    height: 0px;
 }
 
 /* Turn on single button up on top, and down on bottom */
@@ -1730,6 +1731,13 @@ a:active{
 .job-main div{
   /*transition: all 2s;*/
 }
+.slideIn{
+  -webkit-animation: slideIn .2s forwards;
+}
+.slideOut{
+  -webkit-animation: slideOut .2s forwards;
+}
+@-webkit-keyframes slideOut{}
 .show, .hide {
   -webkit-transform-origin: 0% 0%;
 }

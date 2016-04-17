@@ -80,14 +80,29 @@
                 Btn.innerHTML = Texts.length > 200 ? "显示全部" : "";
 
                 Btn.onclick = function(){
+                    var Speed = (NewT.offsetHeight) / 5;
+                    Speed = Speed > 0 ? Math.ceil(Speed) : Math.floor(Speed);
                     if(Btn.innerHTML == "显示全部"){
                         Btn.innerHTML = "收起";
                         NewT.innerHTML = Texts;
-                        NewT.className = "show";
+                        NewT.className = "slideIn";
+                        // NewT.className = "show";
+                        // NewT.style.height = 0;
+                        // setInterval(function(){
+                        //     NewT.style.height = NewT.offsetHeight + 10 + "px";
+                        // },30);
+                        // NewT.style.height = function(){
+                        //     var iHeight = 0;
+                        //     for(i = 0;i<NewT.style.height;i++){
+                        //         iHeight += NewT.style.offsetHeight;
+                        //         return iHeight;
+                        //     }
+                        // }
                     }else{
                         Btn.innerHTML = "显示全部";
                         NewT.innerHTML = Texts.substring(0,200) + "……";
-                        NewT.className = "hide";
+                        NewT.className = "sliderOut";
+                        // NewT.className = "hide";
                     }
                 }
                 DivT.innerHTML = "";
@@ -100,7 +115,7 @@
         // 激活active
         document.addEventListener("touchstart", function(){
             }, true);
-        
+
         // 可以使用动画，通过不同时刻执行不同动画。
     </script>
 </body>

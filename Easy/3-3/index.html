@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>简易选项卡封装：ID、事件</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+	/* Mian 兼容*/
+		body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td, textarea, input { 
+			font-family: "微软雅黑";
+			font-weight: normal; 
+			padding: 0;
+			margin: 0;
+			/*属性允许您以确切的方式定义适应某个区域的具体内容*/
+			box-sizing:border-box;
+			-moz-box-sizing:border-box; /* Firefox */
+			-webkit-box-sizing:border-box; /* Safari */
+		}
+		body {
+			font-size: 62.5%;
+			-webkit-text-size-adjust: none;/*禁用Webkit内核浏览器的文字大小调整功能*/
+			line-height: 1.5;
+		}
+		a, a:link, a:active, a:visited, a:hover{
+			color: #233241;
+			text-decoration: none;
+		}
+		pre{
+			font-size: 12px;
+			width: 100%;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;/*允许独立的滚动区域和触摸回弹*/
+		}
+		ul{
+			list-style-type: none;
+		}
+		.Hidden{
+			display: none;
+		}
+		.Show{
+			display: block;
+		}
+
+		.box{
+			width: 302px;
+			margin: 22px auto;
+			border: #ccc 1px solid;
+		}
+		.box a{
+			text-align: center;
+			float: left;
+			width: 60px;
+			height: 27px;
+			background-color: #D2E8F7;
+			line-height: 27px;
+		}
+		.box .cli{
+			background-color: #fff;
+		}
+		.box div{
+			width: 300px;
+			height: 295px;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="slider" class="box">
+		<p>
+			<a class="cli" href="javascript:;">1</a>
+			<a href="javascript:;">2</a>
+			<a href="javascript:;">3</a>
+			<a href="javascript:;">4</a>
+			<a href="javascript:;">5</a>
+		</p>
+
+		<div class="Show">1</div>
+		<div class="Hidden">2</div>
+		<div class="Hidden">3</div>
+		<div class="Hidden">4</div>
+		<div class="Hidden">5</div>
+	</div>
+	<div id="slider1" class="box">
+		<p>
+			<a class="cli" href="javascript:;">1</a>
+			<a href="javascript:;">2</a>
+			<a href="javascript:;">3</a>
+			<a href="javascript:;">4</a>
+			<a href="javascript:;">5</a>
+		</p>
+
+		<div class="Show">1</div>
+		<div class="Hidden">2</div>
+		<div class="Hidden">3</div>
+		<div class="Hidden">4</div>
+		<div class="Hidden">5</div>
+	</div>
+</body>
+	<script type="text/javascript">
+		//选项卡对象封装：ID、事件
+		window.onload = function(){
+			new STabs("slider","onclick");
+			new STabs("slider1","onmouseover");
+		}
+		function STabs(ID,Events){
+			var OID = document.getElementById(ID);
+			this.IDa = OID.getElementsByTagName("a");
+			this.IDdiv = OID.getElementsByTagName("div");
+			var _this = this;
+
+			for(var i=0;i<this.IDa.length;i++){
+				this.IDa[i].Numbers = i;
+				this.IDa[i][Events] = function(){
+					_this.Odiv(this);
+				}
+			}
+		};
+		STabs.prototype.Odiv = function(Obtn){
+			for(var i=0;i<this.IDa.length;i++){
+				this.IDa[i].className = "";
+				this.IDdiv[i].className = "Hidden";
+			}
+			Obtn.className = "cli";
+			this.IDdiv[Obtn.Numbers].className = "Show";
+		}
+	</script>
+</html>

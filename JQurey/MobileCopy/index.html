@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>有道理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <!-- 关键词 -->
+    <meta name="keywords" content="" />
+    <!-- 描述 -->
+    <meta name="description" content="" />
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- uc强制竖屏 -->  
+    <meta name="screen-orientation" content="portrait">  
+    <!-- QQ强制竖屏 -->  
+    <meta name="x5-orientation" content="portrait">  
+    <!-- UC强制全屏 -->  
+    <meta name="full-screen" content="yes">  
+    <!-- QQ强制全屏 -->  
+    <meta name="x5-fullscreen" content="true">  
+    <!-- UC应用模式 -->  
+    <meta name="browsermode" content="application">  
+    <!-- QQ应用模式 -->  
+    <meta name="x5-page-mode" content="app">  
+    <style type="text/css">
+    html {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      line-height: 1.6;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a img {
+      border: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    .hd {
+      padding: 2em 0;
+    }
+    .page_title {
+      text-align: center;
+      font-size: 34px;
+      color: #3cc51f;
+      font-weight: 400;
+      margin: 0 15%;
+    }
+    .weui_article {
+      padding: 20px 15px;
+      font-size: 15px;
+    }
+    .weui_article h1 {
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: .75em;
+    }
+    .weui_article section {
+      margin-bottom: 1.5em;
+    }
+    .weui_article h2 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: .3em;
+    }
+    .weui_article h3 {
+      font-weight: 400;
+      font-size: 15px;
+    }
+    .shares{
+        display: none;
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        width: 40px;
+        height: 40px;
+        background: #15DCD9;
+        border-radius: 50%;
+    }
+    .ui-loader {
+      display: none;
+      z-index: 9999999;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border: 0;
+    }
+    </style>
+
+</head>
+<body>
+    <div class="hd">
+        <h1 class="page_title">Article</h1>
+    </div>
+    <article class="weui_article">
+        <h1>标题</h1>
+        <section id="pageone">
+            <h2 class="title">《参与感》</h2>
+            <section>
+                <p>小米终于开口了，作为社会化营销的圣经读物，《参与感》翻开的是一个崭新的商业时代。小米现象的背后，是互联网时代人类信息组织结构的深层巨变，是小米公司对这一巨变的敏感觉察和精确把握。了解小米，从《参与感》开始！</p>
+            </section>
+        </section>
+    </article>
+    <div class="shares"></div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script> -->
+
+<script type="text/javascript">
+    var selectedText;
+    $(document).ready(function(){
+        // alert("onload");
+        $("p").on("taphold",function(){
+            // alert("长按屏幕");
+            $(".shares").css("display","block");
+            // setTimeout("sharet()",2000);
+            
+    function sharet(selectedText){
+
+        selectedText = window.getSelection().toString();
+        // alert(selectedText);
+        console.log("selectedText"+selectedText);
+        return selectedText;
+    }
+    console.log("全局"+selectedText);
+    $(".shares").click(function(){
+        selectedText = window.getSelection().toString();
+        sharet(selectedText);
+        console.log(selectedText);
+        alert(selectedText);
+    });
+    // $(".shares").onclick.css("display","none");
+            // var a={};
+            // a.text = window.getSelection().toString(); 
+            // alert(a.text);
+
+            // a.text.onchange=function(){
+            //     a.text = window.getSelection().toString(); 
+            //     return;
+            //     alert(a.text);
+            // }
+            // getSelectedContents();
+            // function getSelectedContents(){
+            //    if (window.getSelection) { //chrome,firefox,opera
+            //        var range=window.getSelection().getRangeAt(0);
+            //        var container = document.createElement('div');
+            //        container.appendChild(range.cloneContents());
+            //        return container.innerHTML;
+            //        //return window.getSelection(); //只复制文本
+            //    }
+            //    else if (document.getSelection) { //其他
+            //        var range=window.getSelection().getRangeAt(0);
+            //        var container = document.createElement('div');
+            //        container.appendChild(range.cloneContents());
+            //        return container.innerHTML;
+            //        //return document.getSelection(); //只复制文本
+            //    }
+            //    else if (document.selection) { //IE特有的
+            //        return document.selection.createRange().htmlText;
+            //        //return document.selection.createRange().text; //只复制文本
+            //    }
+            // }
+            
+            // if(window.getSelection) {
+            //         var selectedText = window.getSelection().toString(); 
+            //         alert(selectedText);
+            //     }
+      });
+    });
+    // window.onload = function(){
+    //     alert("onload");
+    //     if(window.getSelection){
+    //         window.getSelection
+    //         alert("getSelection");
+    //     }
+    //     document.body.oncopy = function(){
+    //         alert("oncopy");
+    //         if(window.getSelection) {
+    //             var selectedText = window.getSelection().toString(); 
+    //             alert(selectedText);
+    //             alert(selectedText);
+    //         } 
+    //     }
+    // }
+</script>
+</html>
